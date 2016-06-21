@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iRock</title>
+    <style>
+        .box1{margin-top:100px;text-align:center;}
+        .box1 img{cursor: pointer;}
+    </style>
+    <script>
+        const txt = 11 ;
+        function load(){
+            alert("hello,I am your pet rock")
+        };
+        function touchRock(){
+            var username = prompt("what is your name?","Enter your name here.");
+            if(username){
+                alert("It is good to meet you,"+ username + ".");
+                document.getElementById("rockimg").src = "rock_happy.png";
+            }
+        }
+    </script>
+</head>
+<body onload="load()">
+<div class="box1 ">
+    <img src="rock.png" alt="irock" id="rockimg" onclick="touchRock()"/>
+</div>
+</body>
+</html>
