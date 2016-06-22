@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iRock</title>
+    <script src="cookie.js"></script>
+    <script type="text/javascript">
+        var userName;
+        var rockImg;
+        function greetUser(){
+            alert('hello,我是你的小宠物石头');
+        }
+        function resizeRock(){
+            document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9;
+        }
+        function touchRock(){
+            if(userName){
+                alert('我喜欢获得你的关注，' + userName + '。谢谢！')
+            }
+            else{
+                userName = prompt('您的姓名是？','请在这里输入你的姓名。');
+                if(userName){
+                    alert('我喜欢获得主人的关注，' + userName + '。谢谢！')
+                }
+            }
+            rockImg = document.getElementById('rockImg');
+            rockImg.src = "rock_happy.png";
+            setTimeout("rockImg.src = 'rock.png'",1 * 60 * 1000);
+//            document.getElementById('rockimg').src = 'rock_happy.png';
+//            setTimeout("document.getElementById('rockimg').src = 'rock.png'",1 * 60 * 1000);
+        }
+
+
+    </script>
+</head>
+<body onload="resizeRock(); greetUser();" onresize="resizeRock()">
+<div style="margin-top:100px; text-align:center">
+    <img id="rockImg" src="rock.png" alt="iRock" style="cursor:pointer" onclick="touchRock();" />
+</div>
+</body>
+
+</html>
