@@ -19,8 +19,8 @@ function readCookie(name){
     var cookies = document.cookie.split(';');//使用分号隔开各个cookie
     for(var i=0; i < cookies.length; i++){
         var c = cookies[i];
-        while(c.charAT(0) == '')
-            c = c.substring(searchName.length, c.length);
+        while(c.charAt(0) == '')
+            c =c.substring(searchName.length, c.length);
     }
     return null;
 }
