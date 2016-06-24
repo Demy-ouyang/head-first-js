@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>火柴人大冒险</title>
+    <script>
+        var curScene = 0;
+        var $input1 = document.getElementById("decision1");
+        var $input2 = document.getElementById("decision3");
+        function changeScene(option){
+            var message = '';
+            if(curScene == 0){
+                curScene = 1 ;
+                message = "start the story,fork in the road.";
+            }
+            else if(curScene == 1){
+                if(option == 1){
+                    curScene = 2;
+                    message = "take the path,see a little house in the woods."
+                }
+                else{
+                    curScene = 3;
+                    message = "take the bridge,the bridge overlooking stream";
+                }
+            }
+            else if(curScene == 2){
+                if(option == 1){
+                    curScene = 4;
+                    message = "walk around back,witch in window"
+                }
+                else{
+                    curScene = 5;
+                    message = "eaten by witch,the end";
+                }
+            }
+            else if(curScene == 3){
+                if(option == 1){
+                    curScene = 6;
+                    message = "sorry,a troll lives on the other side of the bridge and you" + "just became his lunch"
+                }
+                else{
+                    curScene = 7;
+                    message = "Your stare is intertupted by the arrival of a huge troll.";
+                }
+            }
+            else if(curScene == 4){
+                if(option == 1){
+                    curScene = 8;
+                }
+                else{
+                    curScene = 5;
+                    message = "eaten by witch,the end";
+                }
+            }
+            else if(curScene == 5){
+                curScene = 0;
+            }
+            else if(curScene == 6){
+                curScene = 0;
+            }
+            else if(curScene == 7){
+                if(option == 1){
+                    curScene = 6;
+                    message = "eaten by troll,the end"
+                }
+                else{
+                    curScene = 9;
+                }
+            }
+            else if(curScene == 8){
+            }
+            else if(curScene == 9){
+            }
+            document.getElementById("sceneimg").src = 'scene' + curScene + ".png";
+            if(message !=''){
+                alert(message);
+            };
+
+        }
+    </script>
+</head>
+<body>
+<div style="margin-top:100px;text-align: center">
+    <img src="scene0.png" alt="" id="sceneimg"/><br/>
+    please choose：
+    <input type='button' id="decision1" value="1" onclick="changeScene(1)"/>
+    <input type='button' id="decision2" value="2" onclick="changeScene(2)"/>
+</div>
+</body>
+</html>

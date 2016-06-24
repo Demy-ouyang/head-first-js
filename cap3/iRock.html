@@ -8,13 +8,14 @@
         var userName;
         var rockImg;
         function greetUser(){
-            userName = readCookie('irock_name');
-            if(userName){
-                alert("hello" + userName + ",i missed you.");
-            }
-            else{
-                alert('hello,我是你的小宠物石头');
-            }
+            if(navigator.cookieEnabled)
+                userName = readCookie('irock_name');
+                if(userName){
+                    alert("hello" + userName + ",i missed you.");
+                }
+                else{
+                    alert('hello,我是你的小宠物石头');
+                }
         }
         function resizeRock(){
             document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9;
@@ -27,7 +28,10 @@
                 userName = prompt('您的姓名是？','请在这里输入你的姓名。');
                 if(userName){
                     alert('我喜欢获得主人的关注，' + userName + '。谢谢！');
-                    writeCookie("irock_name", userName ,5 * 365);
+                    if(navigator.cookieEnabled)
+                        writeCookie("irock_name", userName ,5 * 365);
+                    else
+                    alert("sorry.cookies在您的浏览器中不受支持")
                 }
             }
             rockImg = document.getElementById('rockImg');
