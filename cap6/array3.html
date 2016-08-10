@@ -9,17 +9,24 @@
             [false,false,false,true,true,true,false,false,true]
         ];//创建二维数组
         var selSeat = -1;
+
+        function setSeat(seatNum,status,description){
+            document.getElementById("seat"+seatNum).src = "seat_" +status +".png";
+            document.getElementById("seat"+seatNum).alt = description;
+        };
         function  initSeats(){
             for(var i = 0;i<seats.length;i++){
                 for(var j = 0;j<seats[i].length;j++)//j表示数组
-                if(seats[i][j]){
-                   document.getElementById("seat" + (i * seats[i].length +j)).src = "seat_avail.png";
-                   document.getElementById("seat" + (i * seats[i].length +j)).alt = "available seat";
-                }
-                else{
-                    document.getElementById("seat" + (i * seats[i].length +j)).src = "seat_unavail.png";
-                    document.getElementById("seat" + (i * seats[i].length +j)).alt = "unavailable seat";
-                }
+                    if(seats[i][j]){
+                        setSeat(i * seats[i].length +j,"avail","available seat");
+//                        document.getElementById("seat" + (i * seats[i].length +j)).src = "seat_avail.png";
+//                        document.getElementById("seat" + (i * seats[i].length +j)).alt = "available seat";
+                    }
+                    else{
+                        setSeat(i * seats[i].length +j,"unavail","unavailable seat");
+//                        document.getElementById("seat" + (i * seats[i].length +j)).src = "seat_unavail.png";
+//                        document.getElementById("seat" + (i * seats[i].length +j)).alt = "unavailable seat";
+                    }
             };
         }
         function findSeat(){
@@ -29,36 +36,28 @@
             }
             var i= 0,finished = false;
             while(i<seats.length && !finished){
-                for(var j=0;j<seats[i].length;j++){
+                for (var j = 0; j<seats[i].length;j++){
                     if(seats[i][j] && seats[i][j+1] && seats[i][j+2]){
-                        selSeat = i*seats[i].length + j;
-                        document.getElementById("seat" + (i * seats[i].length +j)).src = "seat_select.png";
-                        document.getElementById("seat" + (i * seats[i].length +j)).alt = "Your seat";
-                        document.getElementById("seat" + (i * seats[i].length +j+1)).src = "seat_select.png";
-                        document.getElementById("seat" + (i * seats[i].length +j+1)).alt = "Your seat";
-                        document.getElementById("seat" + (i * seats[i].length +j+2)).src = "seat_select.png";
-                        document.getElementById("seat" + (i * seats[i].length +j+2)).alt = "Your seat";
-                        var accept = confirm("seats" + (j+1) + "through" + (j+3) + "in row" +(i+1)+"are available.Accept?");
+                        selSeat = i* seats[i].length + j;
+                        setSeat(i*seats[i].length + j,"select","your seat");
+                        setSeat(i*seats[i].length + j+1,"select","your seat");
+                        setSeat(i*seats[i].length + j+2,"select","your seat");
+
+                        var accept = confirm("seats" + (j+1) + "through" + (j+3) + "in row" +(i+1)+"are available .Accept?");
                         if(accept){
                             finished = true;
                             break;
-                        }
-                        else{
+                        }else{
                             selSeat = -1;
-                            document.getElementById("seat" + (i * seats[i].length +j)).src = "seat_avail.png";
-                            document.getElementById("seat" + (i * seats[i].length +j)).alt = "available seat";
-                            document.getElementById("seat" + (i * seats[i].length +j+1)).src = "seat_avail.png";
-                            document.getElementById("seat" + (i * seats[i].length +j+1)).alt = "available seat";
-                            document.getElementById("seat" + (i * seats[i].length +j+2)).src = "seat_avail.png";
-                            document.getElementById("seat" + (i * seats[i].length +j+2)).alt = "available seat";
+                            setSeat(i*seats[i].length + j,"select","your seat");
+                            setSeat(i*seats[i].length + j+1,"select","your seat");
+                            setSeat(i*seats[i].length + j+2,"select","your seat");
                         }
                     }
                 }
                 i++;
             }
         }
-    </script>
-    <script>
 
     </script>
 </head>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>温度</title>
+    <script>
+        function getTempt(){
+            var rawTemp = readSensor();//将传感器数据格式转换为温度单位
+            var actualTemp = converTemp(rawTemp);
+            return actualTemp;//返回传感器的实际温度度数
+        }
+        function heat(targetTemp){
+            if(getTempt() >= targetTemp){
+                return false;//不需要加热，返回false并结束函数
+            }
+            while(getTempt()< targetTemp){
+
+            }
+            return true;//结束加热，返回true，指出运作成功
+        }
+        function showClimateMsg(){
+            alert(constructMessage());
+        }
+        function constructClimateMsg(){
+            var msg = "";
+            msg +="Local";
+            if(getTempt() > 80){
+                msg += "Warming";
+            }else{
+                msg += "cooling";
+                msg += "is";
+            }
+            if(getTempt() <= 70){
+                return msg + "a hoax!";
+            }else{
+                return msg + "real!";
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
