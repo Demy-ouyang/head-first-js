@@ -5,68 +5,49 @@
     <title>空中横幅---正则表达式</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script type="text/javascript">
-        function validateNonEmpty(inputField, helpText){
-            if(inputField.value.length == 0){
+        function validateRegEx(regex,input,helpText,helpMessage){
+            if (!regex.test(input)) {
                 if(helpText != null)
-                    helpText.innerHTML = "please enter a value.";
+                    helpText.innerHTML = helpMessage;
                 return false;
             }
             else{
-                if(helpText !=null)
+                if(helpText != null)
                     helpText.innerHTML = "";
                 return true;
             }
         }
 
+        function validateNonEmpty(inputField, helpText){
+           return validateRegEx(/.+/,inputField.value,helpText,"please enter a value");
+        }
+
         function validateLength(minLength,maxLength,inputField,helpText){
-            if(inputField.value.length < minLength  || inputField.value.length > maxLength){
-                if(helpText != null)
-                    helpText.innerHTML = "please enter a value" + minLength + "to" + maxLength + "characters in length";
-                return false;
-            }
-            else{
-                if(helpText != null)
-                    helpText.innerHTML = "";
-                return true;
-            }
+            return validateRegEx(new RegExp("^.{" + minLength + "," + maxLength + "}$"),
+                    inputField.value, helpText,
+                    "Please enter a value " + minLength + " to " + maxLength +
+                    " characters in length.");
         }
         function validateZIPCode(inputField,helpText){
-                    if(inputField.value.length !== 5){
-                        if(helpText != null)
-                            helpText.innerHTML = "please enter exactly five digits";
-                        return false;
-                    }
-                    else if(isNaN(inputField.value)){
-                        if(helpText != null)
-                            helpText.innerHTML = "please enter a number";
-                        return false;
-                    }
-                    else{
-                        if(helpText !=null)
-                            helpText.innerHTML = "";
-                        return true;
-                    }
-                }
+            if (!validateNonEmpty(inputField, helpText))
+                return false;
+
+            // Then see if the input value is a ZIP code
+            return validateRegEx(/^\d{5}$/,
+                    inputField.value, helpText,
+                    "Please enter a 5-digit ZIP code.");
+        }
         function validateDate(inputField,helpText){
             if(!validateNonEmpty(inputField,helpText))
             return false;
 
-            return validateRegEx(/^\d{2}\/\d{2}\/\d{2}\/\d{4}$/,inputField.value,helpText,"please enter a data(for example,-1/14/1975)");
+            return validateRegEx(/^\d{2}\/\d{2}\/\d{2,4}$/,
+                    inputField.value, helpText,
+                    "Please enter a date (for example, 01/14/1975).");
         }
 
 
-        function validateRegEx(regex,inputStr,helpText,helpMessage){
-            if(!regex.text(inputStr)){
-                if(helpText != null)
-                helpText.innerHTML = helpMessage;
-            return false;
-            }
-            else{
-                if(helpText != null)
-                    helpText.innerHTML = "";
-                return true;
-            }
-        }
+
 
 
         function placeOrder(form){
@@ -105,7 +86,7 @@
     <div class="field">
         请输入展示时间:
         <input id="date" name="date" type="text" size="10"
-               onblur="validateNonEmpty(this, document.getElementById('date_help'))" />
+               onblur="validateDate(this, document.getElementById('date_help'))" />
         <span id="date_help" class="help"></span>
     </div>
     <div class="field">
