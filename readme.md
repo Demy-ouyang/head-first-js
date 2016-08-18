@@ -1,12 +1,12 @@
 ### head first javascript
 百度网盘地址(http://pan.baidu.com/s/1o7KGRiU)
-#### capter 01
-#### capter 02
-#### capter 03
-#### capter 04
-#### capter 05
-#### capter 06
-#### capter 07
+#### capter 01(page1-32)
+#### capter 02(page22-84)
+#### capter 03(page85-134)
+#### capter 04(page135-188)
+#### capter 05(page189-242)
+#### capter 06(page243-288)
+#### capter 07(page289-342)
 - 正则表达式
     * 正则表达式总是以斜线起始和结束`/ + Expression + /`
     * 元字符，用于连接字母与数字，创建高度描述性文本模式
@@ -28,11 +28,12 @@
     * 匹配最少次数与最多次数`{min,max}`
     举个栗子：`/^\w{5,8}$/`有些密码可选择5-8个字符
     * 选替`this|that`如果匹配子模式this或that，模式匹配成功
-#### capter 08
+#### capter 08(page343-391)
 - getElementById() 用于获取元素独一无二的id
 - innerHTML 用于设置元素的内容类元素
   * elem.innerHTML += "..." 增加或改变元素内容
-- DOM树
+- DOM树 
+
    
     
 
