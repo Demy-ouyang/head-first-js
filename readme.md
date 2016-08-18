@@ -28,7 +28,11 @@
     * 匹配最少次数与最多次数`{min,max}`
     举个栗子：`/^\w{5,8}$/`有些密码可选择5-8个字符
     * 选替`this|that`如果匹配子模式this或that，模式匹配成功
-
+#### capter 08
+- getElementById() 用于获取元素独一无二的id
+- innerHTML 用于设置元素的内容类元素
+  * elem.innerHTML += "..." 增加或改变元素内容
+- DOM树
    
     
 

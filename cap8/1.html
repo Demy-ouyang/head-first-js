@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var curScene = 0;
+        function changeScene(decision){
+            var message = "";
+            switch(curScene){
+                case 0:
+                    curScene =  1;
+                    message = "你的旅程从这里开始";
+                    break;
+                case 1:
+                    if(decision == 1){
+                        curScene = 2
+                        message = "你已到达小木屋";
+                    }
+                    else{
+                        curScene = 3;
+                        message = "你站在小溪边";
+                    }
+                    break;
+            }
+            document.getElementById("sceneimg").src = "scene" + curScene + ".png";
+            document.getElementById("scenetext").innerHTML = message ;
+        }
+
+
+        //page374
+    </script>
+</head>
+<body>
+<div style="margin-top:100px; text-align:center">
+    <img id="sceneimg" src="scene0.png" alt="Stick Figure Adventure" /><br />
+    <div id="scenetext"></div><br />
+    Please choose:
+    <input type="button" id="decision1" value="1" onclick="changeScene(1)" />
+    <input type="button" id="decision2" value="2" onclick="changeScene(2)" />
+</div>
+</body>
+</html>

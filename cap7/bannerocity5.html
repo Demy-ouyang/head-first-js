@@ -46,6 +46,22 @@
                     "Please enter a date (for example, 01/14/1975).");
         }
 
+        function validatePhone(inputField,helpText){
+            if(!validateNonEmpty(inputField,helpText))
+            return false;
+            return validateRegEx(/^\d{3}-\d{3}-\d{4}$/,
+                    inputField.value,helpText,
+                    "please enter a phone number(for example,123-456-7890)");
+        }
+
+        function validateEmail(inputField,helpText){
+            if(!validateNonEmpty(inputField,helpText))
+            return false;
+            return validateRegEx(/^[\w\.-_\+]+@[\w-]+(\.\w{2,3})+$/,
+                    inputField.value, helpText,
+                    "Please enter an email address (for example, johndoe@acme.com).");
+        }
+
 
 
 
@@ -98,13 +114,13 @@
     <div class="field">
         请输入您的电话号码:
         <input id="phone" name="phone" type="text" size="12"
-               onblur="validateNonEmpty(this, document.getElementById('phone_help'))" />
+               onblur="validatePhone(this, document.getElementById('phone_help'))" />
         <span id="phone_help" class="help"></span>
     </div>
     <div class="field">
         你输入您的邮件地址:
         <input id="email" name="email" type="text" size="32"
-               onblur="validateNonEmpty(this, document.getElementById('email_help'))" />
+               onblur="validateEmail(this, document.getElementById('email_help'))" />
         <span id="email_help" class="help"></span>
     </div>
     <input type="button" value="Order Banner" class="btn" onclick="placeOrder(this.form);" />
