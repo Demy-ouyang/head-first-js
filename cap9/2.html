@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Blog(body,date){
+            this.body = body;
+            this.date = date;
+        }
+        var blog = [
+            new Blog("got the new cube i ordered...","08/14/2008"),
+            new Blog("got the new cube i ordered...","08/15/2008"),
+            new Blog("got the new cube i ordered...","08/16/2008"),
+            new Blog("got the new cube i ordered...","08/17/2008"),
+            new Blog("got the new cube i ordered...","08/18/2008")
+        ];
+        function showBlog(numEntries){
+            var i = 0,blogText = "";
+            while(i<blog.length && i<numEntries){
+                if(i % 2 == 0)
+                    blogText += "<p style = 'background-color:#eee;'>"
+                else
+                    blogText += "<p>";
+                blogText += "<strong>" +blog[i].date + "</strong></br>" + blog[i].body + "</p>";
+                i++;
+            }
+        }
+
+    </script>
+</head>
+<body onload="showBlog(5)">
+<h3>youcube - the blog for cube puzzlers</h3>
+<img src="cube.png" alt="youcube">
+<div id="blog"></div>
+<input type="button" id="showall" value="show all blog entries" onclick="showBlog();">
+
+</body>
+</html>
